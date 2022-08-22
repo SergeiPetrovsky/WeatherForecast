@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{%block title%}{{title}}{%endblock%}
+{% block page_content %}
+
+<div class="container mt-5">
+
+        <div class="col-5 offset-1">
+            <form action="" method="post">
+                {% csrf_token%}
+                <label for="city" style="font-size:20px">Город</label>
+                {{form.name}}
+                <input type="submit" name="send" value="Узнать погоду" class="mt-2 btn btn-primary">
+
+            </form>
+        </div>
+
+<br>
+<div class=" col-5 offset-1">
+
+    <p style="font-size:20px">Краткий прогноз</p>
+    {% for info in all_info %}
+    <div class="alert alert-secondary">
+        <b>Город :</b>&nbsp {{info.city}} <br>
+        <b>Температура воздуха :</b>&nbsp{{info.temp}}<sup>&#176 &nbsp&nbsp&nbsp</sup> <br>
+        <b>Атмосферное давление :</b>&nbsp {{info.pressure}} <b> hPa</b> <br>
+        <td><a href="delete/{{info.id}}/">Удалить</a></td>
+        <b style=" margin-left : 300px" >
+            <img src="http://openweathermap.org/img/w/{{info.icon}}.png" alt="Иконка погоды" class="img-thumbnail">
+        </b>
+    </div>
+    {% endfor%}
+
+</div>
+</div>
+{% endblock %}

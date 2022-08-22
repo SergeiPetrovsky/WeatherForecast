@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{%block title%}{{title}}{%endblock%}
+
+{% block page_content %}
+<style>
+   iframe{
+   position : absolute;
+   left:700px;
+   top:200;
+   }
+</style>
+
+    <div>
+        <h1 align="center" >Подробный прогноз</h1>
+        <div style="margin-left:30px">
+
+                <h2>{{d_info.city}}</h2>
+                    <a>Широта : &nbsp&nbsp {{d_info.lat}}</a><sup>&#176 &nbsp&nbsp&nbsp</sup>
+                    <a>Долгота : &nbsp&nbsp {{d_info.lon}}</a><sup>&#176 &nbsp&nbsp&nbsp</sup>
+                <br>
+                <a>Температура воздуха :&nbsp&nbsp {{d_info.temp}}</a> <br>
+                <a>Ощущается как :&nbsp&nbsp {{d_info.temp_fl}}</a> <br>
+                <a>Максимальная наблюдаемая температура :&nbsp&nbsp {{d_info.temp_max}}</a> <br>
+                <a>Давление : &nbsp&nbsp {{d_info.pressure}} hPa</a> <br>
+                <a>Относительная влажность :&nbsp&nbsp{{d_info.humidity}}%</a> <br>
+            <a>Скорость ветра :&nbsp&nbsp {{d_info.wind_s}}&nbsp м/с</a> <br>
+
+
+
+        </div>
+       <iframe  src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d76229.4132583732!2d{{d_info.lon}}!3d{{d_info.lat}}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sru!2sby!4v1660909540012!5m2!1sru!2sby"
+               width="800" height="650" style="border:2;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+
+       </iframe>
+
+    </div>
+
+{% endblock %}
